@@ -16,10 +16,10 @@ const Cart: React.FC = () => {
                 width: '100vw',
             },
             [theme.breakpoints.up('md')]: {
-                width: '40vw',
+                width: '60vw',
             },
             [theme.breakpoints.up('lg')]: {
-                width: '35vw',
+                width: '40vw',
             },
         }}>
             <Box sx={{ position: 'sticky', top: 0, zIndex: 1 }}>
