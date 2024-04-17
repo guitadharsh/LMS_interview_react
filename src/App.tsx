@@ -1,12 +1,16 @@
 import React from 'react'
 import { ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter } from 'react-router-dom';
 import theme from './theme/theme';
+import Router from './router/Router';
 
 const App: React.FC = () => {
-  
+
   return (
     <ThemeProvider theme={theme}>
-      <div>App</div>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
