@@ -1,8 +1,13 @@
 import React from 'react'
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme/theme';
 
 const App: React.FC = () => {
+  
   return (
-    <div>App</div>
+    <ThemeProvider theme={theme}>
+      <div>App</div>
+    </ThemeProvider>
   )
 }
 
