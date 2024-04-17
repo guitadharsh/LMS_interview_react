@@ -1,12 +1,12 @@
 import React, { createContext, useState, useContext } from 'react';
-import { CartProviderProps, CartProps, CartArray } from '../types';
+import { CartProviderProps, CartContextProps, CartArray } from '../types';
 
-const CartContext = createContext<CartProps | undefined>(undefined);
+const CartContext = createContext<CartContextProps | undefined>(undefined);
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const [cart, setCart] = useState<CartArray[]>([])
 
-    const contextValue: CartProps = {
+    const contextValue: CartContextProps = {
         cart,
         setCart
     }

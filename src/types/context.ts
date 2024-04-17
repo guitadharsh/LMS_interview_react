@@ -8,7 +8,7 @@ export interface CartArray {
     price: number;
 }
 
-export interface CartProps {
+export interface CartContextProps {
     cart: CartArray[]
     setCart: React.Dispatch<React.SetStateAction<CartArray[]>>;
 }
