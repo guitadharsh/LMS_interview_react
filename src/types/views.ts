@@ -3,5 +3,6 @@ export interface CourseRegister {
     description: string;
     price: string;
     duration: string;
+    videoLink: string;
     thumbnail: File | null | string;
 }

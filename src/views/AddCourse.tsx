@@ -3,12 +3,13 @@ import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
 import { CourseRegister } from '../types';
 
 const AddCourse: React.FC = () => {
-  
+
   const [formData, setFormData] = useState<CourseRegister>({
     title: '',
     description: '',
     price: '',
     duration: '',
+    videoLink: '',
     thumbnail: null,
   });
 
@@ -17,6 +18,7 @@ const AddCourse: React.FC = () => {
     description: '',
     price: '',
     duration: '',
+    videoLink: '',
     thumbnail: '',
   });
 
@@ -125,30 +127,51 @@ const AddCourse: React.FC = () => {
                   onChange={handleInputChange}
                   error={!!errors.description}
                 />
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="price"
+                      label="Price"
+                      type="text"
+                      size='small'
+                      value={formData.price}
+                      onChange={handleInputChange}
+                      error={!!errors.price}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="duration"
+                      label="Duration"
+                      type="text"
+                      size='small'
+                      value={formData.duration}
+                      onChange={handleInputChange}
+                      error={!!errors.duration}
+                    />
+                  </Grid>
+                </Grid>
+
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="price"
-                  label="Price"
+                  name="videoLink"
+                  label="Video Link"
                   type="text"
                   size='small'
-                  value={formData.price}
+                  value={formData.videoLink}
                   onChange={handleInputChange}
-                  error={!!errors.price}
+                  error={!!errors.videoLink}
                 />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="duration"
-                  label="Duration"
-                  type="text"
-                  size='small'
-                  value={formData.duration}
-                  onChange={handleInputChange}
-                  error={!!errors.duration}
-                />
+
+                <Typography variant="body2" color="textSecondary" sx={{ marginTop: 1 }}>Upload Thumbnail</Typography>
                 <TextField
                   margin="normal"
                   required
@@ -158,7 +181,9 @@ const AddCourse: React.FC = () => {
                   onChange={handleFileInputChange}
                   size='small'
                   error={!!errors.thumbnail}
+                  sx={{ marginTop: 1 }}
                 />
+
                 <Button
                   type="submit"
                   fullWidth
