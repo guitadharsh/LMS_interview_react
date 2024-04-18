@@ -19,7 +19,7 @@ const CartCard: React.FC = () => {
         >
             <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative', width: '100%' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                    <Typography variant="h5">
+                    <Typography variant="h6">
                         Web Development
                     </Typography>
                     <Stack direction='row' spacing={2} alignItems="center">
