@@ -20,20 +20,21 @@ To get started with the project, follow these steps:
    npm run dev
 
 # Project Structure
-lms-client/
-├── public/
-└── src/
-    ├── assets/
-    ├── components/
-    ├── context/
-    ├── router/
-    ├── services/
-    ├── theme/
-    ├── types/
-    ├── views/
-    ├── App.tsx
-    ├── index.css
-    └── main.tsx
+
+- **public/**: Public assets and HTML template.
+- **src/**: Source code directory.
+  - **assets/**: Images, fonts, or other static assets.
+  - **components/**: Reusable React components.
+  - **context/**: Context API for state management.
+  - **router/**: Routing configuration.
+  - **services/**: Services for API requests.
+  - **theme/**: Styling or theme configuration.
+  - **types/**: TypeScript type definitions.
+  - **views/**: React components for different views/pages.
+- **App.tsx**: Main application component.
+- **index.css**: Global styles.
+- **main.tsx**: Entry point of the application.
+
 
 ## Technologies Used
 
