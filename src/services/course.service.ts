@@ -21,7 +21,7 @@ const courseServices = {
         catch (err) {
             throw err;
         }
-    }
+    }    
 };
 
 export { courseServices };
