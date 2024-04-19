@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Card, CardContent, CardMedia, IconButton, Stack, Tooltip, Typography } from '@mui/material';
 import DoDisturbOnOutlinedIcon from '@mui/icons-material/DoDisturbOnOutlined';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { useGlobalData } from '../context/CartContext';
 import { CartCardProps } from '../types';
 
@@ -31,21 +32,25 @@ const CartCard: React.FC<CartCardProps> = ({ _id, title, description, duration, 
         >
             <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative', width: '100%' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                    <Typography variant="h6">
+                    <Typography variant="subtitle1">
                         {title}
                     </Typography>
                     <Stack direction='row' spacing={2} alignItems="center">
                         <Box>
-                            <Typography variant="subtitle1" color="text.secondary">
+                            <Typography variant="caption" color="text.secondary">
                                 {description}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {duration}
-                            </Typography>
+                            <Box sx={{ display: 'flex', alignItems: "center", gap: '4px' }}>
+                                <AccessTimeIcon sx={{ fontSize: 'small' }} />
+                                <Typography variant="body2" color="text.secondary">
+                                    {duration}
+                                </Typography>
+                            </Box>
+
                         </Box>
 
                         <Box>
-                            <Typography variant="subtitle1" color="primary">
+                            <Typography variant="caption" color="primary">
                                 {owner}
                             </Typography>
                             <Box sx={{ display: 'flex', alignItems: "center" }}>

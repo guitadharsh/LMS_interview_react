@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { AppBar, Container, Toolbar, Typography, Box, Stack, Avatar, IconButton, Badge, Menu, useMediaQuery, Button } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Cart from './Cart';
 import { useGlobalData } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
@@ -81,7 +82,12 @@ const Navbar: React.FC = () => {
                       onClick={handleIsCart}
                     >
                       <Badge badgeContent={cart?.length} color="error">
-                        <ShoppingCartIcon sx={{ color: theme => theme.palette.common.white }} />
+                        {
+                          isOpen ?
+                            <ShoppingCartIcon sx={{ color: theme => theme.palette.common.white }} />
+                            :
+                            <ShoppingCartOutlinedIcon sx={{ color: theme => theme.palette.common.white }} />
+                        }
                       </Badge>
                     </IconButton>
                     <Menu
