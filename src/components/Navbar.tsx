@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
           </Container>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="xl" sx={{ marginTop: 10 }}>
+      <Container maxWidth="lg" sx={{ marginTop: 10 }}>
         <Outlet />
       </Container>
     </>
