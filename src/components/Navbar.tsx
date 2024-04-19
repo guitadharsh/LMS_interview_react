@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { AppBar, Container, Toolbar, Typography, Box, Stack, Avatar, IconButton, Badge, Menu, useMediaQuery, Button } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -39,7 +39,10 @@ const Navbar: React.FC = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(false)
+    localStorage.setItem('isUserLoggedIn', 'false')
     setLoggedInUser(undefined)
+    setAnchorE2(null)
+    setIsProfileMenu(false)
     navigate('/')
   }
 

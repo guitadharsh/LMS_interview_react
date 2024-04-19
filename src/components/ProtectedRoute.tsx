@@ -7,7 +7,10 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ isLoggedIn, children }) => {
-    if (isLoggedIn) {
+    const isUserLoggedInString = localStorage.getItem('isUserLoggedIn');
+    const isUserLoggedIn = isUserLoggedInString === 'true'; 
+
+    if (isLoggedIn || isUserLoggedIn) {
         return <>{children}</>;
     } else {
         return <Navigate to="/" replace />;

@@ -41,9 +41,10 @@ const SelectUser: React.FC = () => {
   const handleChange = (event: SelectChangeEvent<string>) => {
     if (event.target.value) {
       setUserName(event.target.value);
-      navigate('/add-course')
+      navigate('/view-course')
       setIsLoggedIn(true)
       const user = users?.find((item) => item?._id.toString() === event.target.value);
+      localStorage.setItem('isUserLoggedIn', 'true')
       setLoggedInUser(user)
     }
   };
