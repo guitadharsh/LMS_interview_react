@@ -20,5 +20,6 @@ export interface CourseProps {
     price: number;
     title: string;
     videoLink: string;
+    thumbnail: string;
   };
 }

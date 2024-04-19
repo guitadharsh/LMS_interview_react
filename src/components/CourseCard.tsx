@@ -8,14 +8,13 @@ import Typography from '@mui/material/Typography';
 import { CourseProps } from '../types';
 
 const CourseCard: React.FC<CourseProps> = ({ data }) => {
-  console.log('data', data)
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="green iguana"
         height="140"
-        image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+        image={data?.thumbnail}
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
