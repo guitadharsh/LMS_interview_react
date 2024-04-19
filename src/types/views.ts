@@ -23,3 +23,13 @@ export interface CourseProps {
     thumbnail: string;
   };
 }
+
+export interface CartCardProps {
+  _id: string;
+  title: string;
+  description: string;
+  duration: string;
+  price: number;
+  thumbnail: string;
+  owner: string;
+}

@@ -2,8 +2,11 @@ import React from 'react';
 import { Box, useTheme, Typography, Container, Stack, Button } from '@mui/material';
 import CartCard from './CartCard';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import { useGlobalData } from '../context/CartContext';
 
 const Cart: React.FC = () => {
+
+    const { cart } = useGlobalData()
     const theme = useTheme();
 
     return (
@@ -30,16 +33,16 @@ const Cart: React.FC = () => {
 
             <Container sx={{ flex: '1', overflow: 'auto', zIndex: 0 }}>
                 <Stack spacing={3}>
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
+                    {
+                        cart?.map((item: any, index: number) => {
+                            console.log('item', item)
+                            return (
+                                <>
+                                    <CartCard _id={item?.data?._id} title={item?.data?.title} description={item?.data?.description} duration={item?.data?.duration} price={item?.data?.price} thumbnail={item?.data?.thumbnail} owner={item?.data?.createdBy?.name} key={index} />
+                                </>
+                            )
+                        })
+                    }
                 </Stack>
             </Container>
             <Box sx={{ flex: '0 0 auto', borderTop: '1px solid #ccc', py: 2 }}>

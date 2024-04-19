@@ -6,7 +6,7 @@ const GlobalDataContext = createContext<GlobalDataContextProps | undefined>(unde
 const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loggedInUser, setLoggedInUser] = useState<User | undefined>(undefined);
-    const [cart, setCart] = useState<CartContext>({});
+    const [cart, setCart] = useState<CartContext>([]);
 
     const contextValue: GlobalDataContextProps = {
         isLoggedIn,

@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   const [anchorE2, setAnchorE2] = React.useState<null | HTMLElement>(null);
   const isSmallScreen = useMediaQuery((theme: any) => theme.breakpoints.down('sm'));
 
-  const { loggedInUser, isLoggedIn, setIsLoggedIn, setLoggedInUser } = useGlobalData()
+  const { cart, loggedInUser, isLoggedIn, setIsLoggedIn, setLoggedInUser } = useGlobalData()
 
   const handleIsCart = (event: React.MouseEvent<HTMLElement>) => {
     setIsOpen((prev: boolean) => !prev);
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
                       aria-expanded={isOpen ? 'true' : undefined}
                       onClick={handleIsCart}
                     >
-                      <Badge badgeContent={4} color="error">
+                      <Badge badgeContent={cart?.length} color="error">
                         <ShoppingCartIcon sx={{ color: theme => theme.palette.common.white }} />
                       </Badge>
                     </IconButton>
