@@ -22,7 +22,6 @@ const Cart: React.FC = () => {
             totalAmount += item.data.price;
         });
         setGrandTotal(totalAmount)
-        console.log('Total Amount:', totalAmount);
     }, [cart]);
 
     //handle checkout
@@ -82,7 +81,6 @@ const Cart: React.FC = () => {
                 <Stack spacing={3}>
                     {
                         cart?.map((item: any, index: number) => {
-                            console.log('item', item)
                             return (
                                 <>
                                     <CartCard _id={item?.data?._id} title={item?.data?.title} description={item?.data?.description} duration={item?.data?.duration} price={item?.data?.price} thumbnail={item?.data?.thumbnail} owner={item?.data?.createdBy?.name} key={index} />
