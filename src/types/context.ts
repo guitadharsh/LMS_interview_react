@@ -1,10 +1,21 @@
-export interface cartContext {
+export interface CartContext {
     [key: string]: any;
 }
 
+export interface User {
+    username: string,
+    profilePicture: string
+}
+
 export interface GlobalDataContextProps {
-    data: cartContext;
-    setData: React.Dispatch<React.SetStateAction<cartContext>>;
+    cart: CartContext;
+    setCart: React.Dispatch<React.SetStateAction<CartContext>>;
+
+    isLoggedIn: boolean;
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+
+    loggedInUser: User | undefined;
+    setLoggedInUser: React.Dispatch<React.SetStateAction<User | undefined>>;
 }
 
 export interface GlobalDataProviderProps {

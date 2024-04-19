@@ -1,14 +1,22 @@
 import React, { createContext, useState, useContext } from 'react';
-import { GlobalDataContextProps, GlobalDataProviderProps, cartContext } from '../types'
+import { GlobalDataContextProps, GlobalDataProviderProps, CartContext, User } from '../types'
 
 const GlobalDataContext = createContext<GlobalDataContextProps | undefined>(undefined);
 
 const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({ children }) => {
-    const [data, setData] = useState<cartContext>({});
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+    const [loggedInUser, setLoggedInUser] = useState<User | undefined>(undefined);
+    const [cart, setCart] = useState<CartContext>({});
 
     const contextValue: GlobalDataContextProps = {
-        data,
-        setData
+        isLoggedIn,
+        setIsLoggedIn,
+
+        loggedInUser,
+        setLoggedInUser,
+
+        cart,
+        setCart,
     }
 
     return <GlobalDataContext.Provider value={contextValue}>{children}</GlobalDataContext.Provider>

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import theme from './theme/theme';
 import Router from './router/Router';
 import axios from 'axios';
+import { GlobalDataProvider } from './context/CartContext';
 
 const App: React.FC = () => {
 
@@ -12,7 +13,9 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Router />
+        <GlobalDataProvider>
+          <Router />
+        </GlobalDataProvider>
       </BrowserRouter>
     </ThemeProvider>
   )
