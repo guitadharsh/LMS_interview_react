@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# ReactJS Learning Management System (LMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the ReactJS Learning Management System (LMS) project! This web application allows users to create, view, add to cart, and checkout courses.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add/Edit Course**: Users can create basic details, fee, and content of a particular course, similar to Udemy.
+- **View Courses**: Users can view a list of all courses with the option to add them to the cart.
+- **Add to Cart**: Users can add courses to their cart for later checkout.
+- **Checkout Cart**: Users can review the courses in their cart and complete the checkout process to place an order.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To get started with the project, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. Navigate to the project directory:
+   ```bash
+   cd lms-client
+   npm install
+   npm run dev
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+# Project Structure
+lms-client/
+├── public/
+└── src/
+    ├── assets/
+    ├── components/
+    ├── context/
+    ├── router/
+    ├── services/
+    ├── theme/
+    ├── types/
+    ├── views/
+    ├── App.tsx
+    ├── index.css
+    └── main.tsx
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Technologies Used
+
+- **React Vite**: A fast development server and build tool for React applications.
+- **TypeScript**: A superset of JavaScript that adds static typing and other advanced features.
+- **Axios**: A promise-based HTTP client for making asynchronous requests in JavaScript.
+- **Context API**: A feature in React for managing global state without using Redux or other state management libraries.
+
+
