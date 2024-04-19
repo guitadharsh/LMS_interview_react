@@ -62,8 +62,8 @@ const Navbar: React.FC = () => {
                 {
                   isLoggedIn &&
                   <Stack direction='row' spacing={2}>
-                    <Typography variant='subtitle2' sx={{ cursor: 'pointer' }} onClick={() => navigate('/add-course')} style={{ fontWeight: location.pathname === '/add-course' ? 'bold' : 'normal' }}>Add Course</Typography>
                     <Typography variant='subtitle2' sx={{ cursor: 'pointer' }} onClick={() => navigate('/view-course')} style={{ fontWeight: location.pathname === '/view-course' ? 'bold' : 'normal' }}>View Course</Typography>
+                    <Typography variant='subtitle2' sx={{ cursor: 'pointer' }} onClick={() => navigate('/add-course')} style={{ fontWeight: location.pathname === '/add-course' ? 'bold' : 'normal' }}>Add Course</Typography>
                   </Stack>
                 }
 
