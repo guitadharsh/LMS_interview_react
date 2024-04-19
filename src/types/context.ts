@@ -1,14 +1,12 @@
-export interface CartProviderProps {
+export interface cartContext {
+    [key: string]: any;
+}
+
+export interface GlobalDataContextProps {
+    data: cartContext;
+    setData: React.Dispatch<React.SetStateAction<cartContext>>;
+}
+
+export interface GlobalDataProviderProps {
     children: React.ReactNode;
-}
-
-export interface CartArray {
-    id: string,
-    courseName: string,
-    price: number;
-}
-
-export interface CartContextProps {
-    cart: CartArray[]
-    setCart: React.Dispatch<React.SetStateAction<CartArray[]>>;
 }

@@ -1,2 +1,2 @@
-export type { CartProviderProps, CartContextProps, CartArray } from './context';
+export type { GlobalDataContextProps, GlobalDataProviderProps, cartContext } from './context';
 export type { CourseRegister } from './views';

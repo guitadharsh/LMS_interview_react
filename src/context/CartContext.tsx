@@ -1,30 +1,25 @@
 import React, { createContext, useState, useContext } from 'react';
-import { CartProviderProps, CartContextProps, CartArray } from '../types';
+import { GlobalDataContextProps, GlobalDataProviderProps, cartContext } from '../types'
 
-const CartContext = createContext<CartContextProps | undefined>(undefined);
+const GlobalDataContext = createContext<GlobalDataContextProps | undefined>(undefined);
 
-const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-    const [cart, setCart] = useState<CartArray[]>([])
+const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({ children }) => {
+    const [data, setData] = useState<cartContext>({});
 
-    const contextValue: CartContextProps = {
-        cart,
-        setCart
+    const contextValue: GlobalDataContextProps = {
+        data,
+        setData
     }
 
-    return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
+    return <GlobalDataContext.Provider value={contextValue}>{children}</GlobalDataContext.Provider>
 }
 
-const useCart = () => {
-    const context = useContext(CartContext);
-    if(!context) {
-        throw new Error('cart context must be used within a cart provider');
+const useGlobalData = () => {
+    const context = useContext(GlobalDataContext);
+    if (!context) {
+        throw new Error('Global data context must be used within a provider');
     }
     return context;
 }
 
-export { CartProvider, useCart}
-
-
-
-
-
+export { GlobalDataProvider, useGlobalData }
