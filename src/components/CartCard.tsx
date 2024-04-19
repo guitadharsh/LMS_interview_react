@@ -8,7 +8,7 @@ import { CartCardProps } from '../types';
 
 const CartCard: React.FC<CartCardProps> = ({ _id, title, description, duration, price, thumbnail, owner }) => {
 
-    const { setCart } = useGlobalData();
+    const {setCart } = useGlobalData();
 
     const handleRemoveFromCart = (id: string) => {
         setCart((prev: any) => {

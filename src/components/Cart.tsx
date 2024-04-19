@@ -4,11 +4,15 @@ import CartCard from './CartCard';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useGlobalData } from '../context/CartContext';
+import { orderServices } from '../services/order.service';
+import { Alert, Snackbar } from '@mui/material';
 
 const Cart: React.FC = () => {
 
-    const { cart } = useGlobalData()
+    const { cart, loggedInUser, setCart } = useGlobalData()
     const [grandTotal, setGrandTotal] = useState<number>(0)
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [message, setMessage] = useState<string>('')
     const theme = useTheme();
 
     //calculate grandtotal 
@@ -20,6 +24,37 @@ const Cart: React.FC = () => {
         setGrandTotal(totalAmount)
         console.log('Total Amount:', totalAmount);
     }, [cart]);
+
+    //handle checkout
+    const handleCheckout = async () => {
+        if (cart?.length > 0) {
+            let courseIds = cart?.map((item: any) => item?.data?._id)
+
+            let payload = {
+                orderBy: loggedInUser?._id,
+                courseIds: courseIds,
+                grandTotal: grandTotal,
+                isPaymentSuccesfull: true,
+                paymentMode: 'string'
+            }
+            await orderServices.newOrder(payload)
+                .then((res) => {
+                    if (res) {
+                        setIsOpen(true)
+                        setCart([])
+                        setMessage('Products checkout Succesfully')
+                    }
+                    else {
+                        setIsOpen(true)
+                        setMessage('Failed to order, Please try again')
+                    }
+                })
+                .catch((err) => {
+                    setIsOpen(true)
+                    setMessage(err?.message)
+                })
+        }
+    }
 
     return (
         <Box sx={{
@@ -79,11 +114,22 @@ const Cart: React.FC = () => {
                         </Typography>
 
                     </Stack>
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={handleCheckout}>
                         Checkout
                     </Button>
                 </Stack>
             </Box>
+
+            <Snackbar open={isOpen} autoHideDuration={3000} onClose={() => setIsOpen(false)}>
+                <Alert
+                    onClose={() => setIsOpen(false)}
+                    severity="success"
+                    variant="filled"
+                    sx={{ width: '100%' }}
+                >
+                    {message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }

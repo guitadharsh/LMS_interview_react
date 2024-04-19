@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface newOrderPayload {
-    orderBy: string
+    orderBy: string | number | undefined,
     courseIds: string[],
     grandTotal: number,
     isPaymentSuccesfull: boolean,
@@ -11,9 +11,7 @@ interface newOrderPayload {
 const orderServices = {
     newOrder: async (payload: newOrderPayload) => {
         try {
-            const response = await axios.post(`api/v1/order/new-order`, {
-                payload
-            });
+            const response = await axios.post(`api/v1/order/new-order`, payload);
             return response;
         } catch (err) {
             throw err;
