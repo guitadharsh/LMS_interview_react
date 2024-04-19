@@ -3,6 +3,7 @@ export interface CartContext {
 }
 
 export interface User {
+    _id: number
     name: string,
     profilePicture: string
 }

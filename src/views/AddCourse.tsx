@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
 import { CourseRegister } from '../types';
+import { useGlobalData } from '../context/CartContext';
+import { courseServices } from '../services/course.service';
 
 const AddCourse: React.FC = () => {
+
+  const { loggedInUser } = useGlobalData()
 
   const [formData, setFormData] = useState<CourseRegister>({
     title: '',
@@ -47,7 +51,7 @@ const AddCourse: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const newErrors: CourseRegister = { ...errors };
@@ -65,8 +69,19 @@ const AddCourse: React.FC = () => {
     setErrors(newErrors);
 
     if (!hasError) {
-      console.log('Form data:', formData);
-      // Proceed with form submission
+      courseServices.createNewCourse(loggedInUser?._id, formData)
+        .then((res) => {
+          if (res) {
+            setFormData({
+              title: '',
+              description: '',
+              price: '',
+              duration: '',
+              videoLink: '',
+              thumbnail: null,
+            })
+          }
+        })
     }
   };
 

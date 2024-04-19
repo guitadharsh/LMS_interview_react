@@ -25,7 +25,6 @@ const SelectUser: React.FC = () => {
     userServices.getAllUsers()
       .then((res: any) => {
         if (isMounted) {
-          console.log('response', res);
           setUsers(res.data?.data);
         }
       })
