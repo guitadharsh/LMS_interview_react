@@ -8,7 +8,7 @@ import { GlobalDataProvider } from './context/CartContext';
 
 const App: React.FC = () => {
 
-  axios.defaults.baseURL = 'http://localhost:8000/'
+  axios.defaults.baseURL = 'https://lms-interview-server.onrender.com/'
 
   return (
     <ThemeProvider theme={theme}>
