@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, Paper, TextField, Typography, Snackbar, Alert } from '@mui/material';
 import { CourseRegister } from '../types';
 import { useGlobalData } from '../context/CartContext';
 import { courseServices } from '../services/course.service';
@@ -8,13 +8,14 @@ const AddCourse: React.FC = () => {
 
   const { loggedInUser } = useGlobalData()
 
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [formData, setFormData] = useState<CourseRegister>({
     title: '',
     description: '',
     price: '',
     duration: '',
     videoLink: '',
-    thumbnail: null,
+    thumbnail: '',
   });
 
   const [errors, setErrors] = useState<CourseRegister>({
@@ -36,18 +37,6 @@ const AddCourse: React.FC = () => {
     setErrors(prevErrors => ({
       ...prevErrors,
       [name]: '',
-    }));
-  };
-
-  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files && event.target.files[0];
-    setFormData(prevData => ({
-      ...prevData,
-      thumbnail: file,
-    }));
-    setErrors(prevErrors => ({
-      ...prevErrors,
-      thumbnail: '',
     }));
   };
 
@@ -78,8 +67,9 @@ const AddCourse: React.FC = () => {
               price: '',
               duration: '',
               videoLink: '',
-              thumbnail: null,
+              thumbnail: '',
             })
+            setIsOpen(true)
           }
         })
     }
@@ -185,18 +175,17 @@ const AddCourse: React.FC = () => {
                   onChange={handleInputChange}
                   error={!!errors.videoLink}
                 />
-
-                <Typography variant="body2" color="textSecondary" sx={{ marginTop: 1 }}>Upload Thumbnail</Typography>
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  type="file"
+                  type="text"
                   name="thumbnail"
-                  onChange={handleFileInputChange}
+                  label="Thumbnail link"
                   size='small'
+                  value={formData.thumbnail}
+                  onChange={handleInputChange}
                   error={!!errors.thumbnail}
-                  sx={{ marginTop: 1 }}
                 />
 
                 <Button
@@ -212,6 +201,17 @@ const AddCourse: React.FC = () => {
           </Grid>
         </Grid>
       </Paper>
+
+      <Snackbar open={isOpen} autoHideDuration={3000} onClose={() => setIsOpen(false)}>
+        <Alert
+          onClose={() => setIsOpen(false)}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          Course Saved Succesfully.
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

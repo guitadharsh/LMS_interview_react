@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { AppBar, Container, Toolbar, Typography, Box, Stack, Avatar, IconButton, Badge, Menu, useMediaQuery, Button } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -55,6 +55,19 @@ const Navbar: React.FC = () => {
               <Box>
                 <Typography variant='h6'>{isSmallScreen ? 'LMS' : 'Learning Management System'}</Typography>
               </Box>
+
+              <Box>
+
+                {
+                  isLoggedIn &&
+                  <Stack direction='row' spacing={2}>
+                    <Typography variant='subtitle2' sx={{ cursor: 'pointer' }} onClick={() => navigate('/add-course')} style={{ fontWeight: location.pathname === '/add-course' ? 'bold' : 'normal' }}>Add Course</Typography>
+                    <Typography variant='subtitle2' sx={{ cursor: 'pointer' }} onClick={() => navigate('/view-course')} style={{ fontWeight: location.pathname === '/view-course' ? 'bold' : 'normal' }}>View Course</Typography>
+                  </Stack>
+                }
+
+              </Box>
+
               <Box>
                 {
                   isLoggedIn &&

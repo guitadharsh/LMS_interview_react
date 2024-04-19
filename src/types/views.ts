@@ -4,7 +4,7 @@ export interface CourseRegister {
   price: string;
   duration: string;
   videoLink: string;
-  thumbnail: File | null | string;
+  thumbnail: string;
 }
 
 export interface CourseProps {
